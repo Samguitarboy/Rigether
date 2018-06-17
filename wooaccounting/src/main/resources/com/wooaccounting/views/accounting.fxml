@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.mvc.View?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<View fx:id="accounting" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@accounting.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.AccountingPresenter">
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+<View fx:id="accounting" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@accounting.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.AccountingPresenter">
+   <bottom>
+      <VBox alignment="TOP_CENTER" prefHeight="219.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="This is Accounting!" />
+            <Button fx:id="record" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onMouseClicked="#buttonClick" prefHeight="67.0" prefWidth="114.0" style="-fx-scale-x: 50%; -fx-background-radius: 50%;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
          </children>
       </VBox>
-   </center>
+   </bottom>
+   <top>
+      <ScrollPane prefHeight="461.0" prefWidth="350.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="332.0">
+               <children>
+                  <VBox alignment="CENTER" layoutY="14.0" prefHeight="53.0" prefWidth="350.0">
+                     <children>
+                        <Label fx:id="speech2text" text="This is what you say" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </top>
 </View>

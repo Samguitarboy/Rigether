@@ -8,17 +8,17 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.wooaccounting.Wooaccounting;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class AccountingPresenter {
 
     @FXML
     private View accounting;
-
+    @FXML
+    private Label speech2text;
+    
     public void initialize() {
         accounting.setShowTransitionFactory(BounceInRightTransition::new);
-        
-        accounting.getLayers().add(new FloatingActionButton(MaterialDesignIcon.INFO.text, 
-            e -> System.out.println("Info")).getLayer());
         
         accounting.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
@@ -30,5 +30,10 @@ public class AccountingPresenter {
                         System.out.println("Favorite")));
             }
         });
+    }
+    
+    @FXML
+    void buttonClick() {
+        speech2text.setText("YO Man ~");
     }
 }

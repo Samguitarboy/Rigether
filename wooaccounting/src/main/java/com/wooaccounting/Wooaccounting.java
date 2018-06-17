@@ -30,4 +30,6 @@ public class Wooaccounting extends MobileApplication {
         scene.getStylesheets().add(Wooaccounting.class.getResource("style.css").toExternalForm());
         ((Stage) scene.getWindow()).getIcons().add(new Image(Wooaccounting.class.getResourceAsStream("/icon.png")));
     }
+    
+    
 }
