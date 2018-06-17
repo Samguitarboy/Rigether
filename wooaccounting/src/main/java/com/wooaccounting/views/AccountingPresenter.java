@@ -92,7 +92,7 @@ public class AccountingPresenter {
       // Builds the sync recognize request
       RecognitionConfig config = RecognitionConfig.newBuilder()
           .setEncoding(AudioEncoding.FLAC)
-          .setSampleRateHertz(16000)
+          .setSampleRateHertz(44100)
           .setLanguageCode("cmn-Hant-TW")
           .build();
       RecognitionAudio audio = RecognitionAudio.newBuilder()
