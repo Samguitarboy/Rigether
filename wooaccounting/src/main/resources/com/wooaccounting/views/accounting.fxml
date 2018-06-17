@@ -13,7 +13,7 @@
    <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="219.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="record" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onMouseClicked="#buttonClick" prefHeight="67.0" prefWidth="114.0" style="-fx-scale-x: 50%; -fx-background-radius: 50%;">
+            <Button fx:id="record" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="67.0" prefWidth="114.0" style="-fx-scale-x: 50%; -fx-background-radius: 50%;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
