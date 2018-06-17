@@ -13,6 +13,8 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import static com.wooaccounting.Wooaccounting.MENU_LAYER;
 import static com.wooaccounting.Wooaccounting.ENTRY_VIEW;
 import static com.wooaccounting.Wooaccounting.ACCOUNTING_VIEW;
+import static com.wooaccounting.Wooaccounting.CALENDAR_VIEW;
+import static com.wooaccounting.Wooaccounting.CHART_VIEW;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 
@@ -30,7 +32,9 @@ public class DrawerManager {
         
         final Item entryItem = new ViewItem("Entry", MaterialDesignIcon.HOME.graphic(), ENTRY_VIEW, ViewStackPolicy.SKIP);
         final Item accountingItem = new ViewItem("Accounting", MaterialDesignIcon.DASHBOARD.graphic(), ACCOUNTING_VIEW);
-        drawer.getItems().addAll(entryItem, accountingItem);
+        final Item calendarItem = new ViewItem("Calendar", MaterialDesignIcon.DASHBOARD.graphic(), CALENDAR_VIEW);
+        final Item chartItem = new ViewItem("Chart", MaterialDesignIcon.DASHBOARD.graphic(), CHART_VIEW);
+        drawer.getItems().addAll(entryItem, accountingItem,calendarItem,chartItem);
         
         if (Platform.isDesktop()) {
             final Item quitItem = new Item("Quit", MaterialDesignIcon.EXIT_TO_APP.graphic());
