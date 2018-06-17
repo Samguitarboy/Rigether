@@ -22,6 +22,7 @@ dependencies {
     compile 'com.gluonhq:charm:4.4.4'
     compile 'org.json:json:20150729'
     compile 'com.github.axet:java-flac-encoder:0.3.8'
+    compile 'com.google.cloud:google-cloud-speech:0.49.0-alpha'
 }
 
 jfxmobile {

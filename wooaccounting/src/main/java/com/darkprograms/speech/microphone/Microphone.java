@@ -148,7 +148,7 @@ public class Microphone implements Closeable {
 	 * @return Returns AudioFormat to be used later when capturing audio from microphone
 	 */
 	public AudioFormat getAudioFormat() {
-		float sampleRate = 8000.0F;
+		float sampleRate = 44100.0F;
 		//8000,11025,16000,22050,44100
 		int sampleSizeInBits = 16;
 		//8,16
@@ -173,6 +173,7 @@ public class Microphone implements Closeable {
 				setState(CaptureState.PROCESSING_AUDIO);
 				getTargetDataLine().open(getAudioFormat());
 				getTargetDataLine().start();
+                            System.out.println("I open the microphone!");
 			} catch (LineUnavailableException e) {
 				e.printStackTrace();
 				return;
@@ -206,8 +207,10 @@ public class Microphone implements Closeable {
 			try {
 				AudioFileFormat.Type fileTypeX = getFileType();
 				File audioFileX = getAudioFile();
+                            System.out.println(audioFileX); 
 				open();
 				AudioSystem.write(new AudioInputStream(getTargetDataLine()), fileTypeX, audioFileX);
+                            System.out.println("Writing to file ing....Done!");
 				//Will write to File until it's closed.
 			} catch (Exception ex) {
 				ex.printStackTrace();

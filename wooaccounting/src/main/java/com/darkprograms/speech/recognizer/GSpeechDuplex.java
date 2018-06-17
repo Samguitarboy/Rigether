@@ -315,6 +315,7 @@ public class GSpeechDuplex {
 			// TIMEOUT is required
 			httpConn.setInstanceFollowRedirects(true);
 			httpConn.setRequestMethod("GET");
+                     httpConn.setRequestProperty("User-agent", "  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0");  
 			httpConn.connect();
 			resCode = httpConn.getResponseCode();
 			if (resCode == HttpsURLConnection.HTTP_OK) {
