@@ -33,7 +33,7 @@ public class Wooaccounting extends MobileApplication {
         Swatch.BLUE.assignTo(scene);
 
         scene.getStylesheets().add(Wooaccounting.class.getResource("style.css").toExternalForm());
-        ((Stage) scene.getWindow()).getIcons().add(new Image(Wooaccounting.class.getResourceAsStream("/icon.png")));
+        ((Stage) scene.getWindow()).getIcons().add(new Image(Wooaccounting.class.getResourceAsStream("/com/wooaccounting/views/icon.png")));
     }
     
     

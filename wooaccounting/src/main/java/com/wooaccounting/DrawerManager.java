@@ -25,9 +25,9 @@ public class DrawerManager {
     public DrawerManager() {
         this.drawer = new NavigationDrawer();
         
-        NavigationDrawer.Header header = new NavigationDrawer.Header("Gluon Mobile",
-                "Multi View Project",
-                new Avatar(21, new Image(DrawerManager.class.getResourceAsStream("/icon.png"))));
+        NavigationDrawer.Header header = new NavigationDrawer.Header("Rigether",
+                "Let's get rich together!",
+                new Avatar(21, new Image(DrawerManager.class.getResourceAsStream("/com/wooaccounting/views/icon.png"))));
         drawer.setHeader(header);
         
         final Item entryItem = new ViewItem("Entry", MaterialDesignIcon.HOME.graphic(), ENTRY_VIEW, ViewStackPolicy.SKIP);
