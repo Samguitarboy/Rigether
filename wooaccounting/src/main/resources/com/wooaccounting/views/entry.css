@@ -1,3 +1,15 @@
 .view {
+	-fx-background-image: url("background.png");
+}
+
+.label {
+	
+}
+
+.button {
+	-fx-font-size: 16px;
+    -fx-font-family: "Monotype Corsiva";
+	-fx-text-fill: #8a3418a8;
+	-fx-background-color: #7fb1bf;
 
 }
