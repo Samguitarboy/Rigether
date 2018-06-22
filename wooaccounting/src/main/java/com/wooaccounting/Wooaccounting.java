@@ -17,6 +17,7 @@ public class Wooaccounting extends MobileApplication {
     public static final String ACCOUNTING_VIEW = "Accounting View";
     public static final String CALENDAR_VIEW = "Calendar View";
     public static final String CHART_VIEW = "Chart View";
+    public static final String WALLET_VIEW = "Wallet View";
     public static final String MENU_LAYER = "Side Menu";
     
     @Override
@@ -25,6 +26,7 @@ public class Wooaccounting extends MobileApplication {
         addViewFactory(ACCOUNTING_VIEW, () -> new AccountingView(ACCOUNTING_VIEW).getView());
         addViewFactory(CALENDAR_VIEW, () -> new CalendarView(CALENDAR_VIEW).getView());
         addViewFactory(CHART_VIEW, () -> new ChartView(CHART_VIEW).getView());
+        addViewFactory(WALLET_VIEW, () -> new ChartView(WALLET_VIEW).getView());
         addLayerFactory(MENU_LAYER, () -> new SidePopupView(new DrawerManager().getDrawer()));
     }
 
