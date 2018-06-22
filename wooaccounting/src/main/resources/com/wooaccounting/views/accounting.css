@@ -1,8 +1,0 @@
-.view {
-	-fx-background-image: url("background.png");
-}
-
-#labelwithimage {          
-    -fx-graphic: url("myImage.png");
-    -fx-graphic-text-gap : 10;
-}
