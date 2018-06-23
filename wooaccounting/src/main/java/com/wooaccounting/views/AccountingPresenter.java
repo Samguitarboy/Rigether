@@ -20,6 +20,7 @@ import com.google.cloud.speech.v1p1beta1.SpeechClient;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionResult;
 import com.google.protobuf.ByteString;
+import com.wooaccounting.GetdataSQL;
 import com.wooaccounting.InsertSQL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,6 +33,8 @@ public class AccountingPresenter {
     private View accounting;
     @FXML
     private Label speech2text;
+    @FXML
+    private Label bot;
     @FXML
     private Button record;
     @FXML
@@ -62,9 +65,14 @@ public class AccountingPresenter {
             } catch (Exception ex) {
 		ex.printStackTrace();
 	}});
-         edit.setOnAction(e->{/*insertdb.recordtoDB("我今天吃鹹酥雞25塊", "鹹酥雞", 25);*/});
+         //edit.setOnAction(e->{insertdb.recordtoDB("我今天吃雞排50塊", "雞排", 50);});
+         edit.setOnAction(e->{test();});
     }
-    
+    private void test(){
+        GetdataSQL getdb = new GetdataSQL();
+        //System.out.print(getdb.searchall());
+        //bot.setText(getdb.searchdate("2018-06-23"));
+    }
     private void recordClick(Microphone mic) {
         
         System.out.println("8888");
@@ -112,7 +120,8 @@ public class AccountingPresenter {
         // first (most likely) one here.
         SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
         System.out.printf("Transcription: %s%n", alternative.getTranscript());
-        speech2text.setText(alternative.getTranscript());
+        speech2text.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
+                                                 .replace("塊", "").replace("元", "").replace("昨天", ""));
       }
     }
        record.setDisable(false);
