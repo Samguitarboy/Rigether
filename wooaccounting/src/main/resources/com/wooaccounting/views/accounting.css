@@ -17,7 +17,7 @@
 .button {          
 
     -fx-background-image: url("button.png");
-    -fx-background-size: 50px;
+    -fx-background-size: 70px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 100%;
 	-fx-background-color: transparent;

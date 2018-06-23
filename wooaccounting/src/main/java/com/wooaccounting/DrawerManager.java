@@ -28,7 +28,7 @@ public class DrawerManager {
         
         NavigationDrawer.Header header = new NavigationDrawer.Header("Rigether",
                 "Let's get rich together!",
-                new Avatar(21, new Image(DrawerManager.class.getResourceAsStream("/com/wooaccounting/views/icon.png"))));
+                new Avatar(21, new Image(DrawerManager.class.getResourceAsStream("/com/wooaccounting/views/small_icon.jpg"))));
         drawer.setHeader(header);
         
         final Item entryItem = new ViewItem("Entry", MaterialDesignIcon.HOME.graphic(), ENTRY_VIEW, ViewStackPolicy.SKIP);

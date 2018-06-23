@@ -7,6 +7,7 @@ import com.wooaccounting.views.ChartView;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.layout.layer.SidePopupView;
 import com.gluonhq.charm.glisten.visual.Swatch;
+import com.wooaccounting.views.WalletView;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -26,7 +27,7 @@ public class Wooaccounting extends MobileApplication {
         addViewFactory(ACCOUNTING_VIEW, () -> new AccountingView(ACCOUNTING_VIEW).getView());
         addViewFactory(CALENDAR_VIEW, () -> new CalendarView(CALENDAR_VIEW).getView());
         addViewFactory(CHART_VIEW, () -> new ChartView(CHART_VIEW).getView());
-        addViewFactory(WALLET_VIEW, () -> new ChartView(WALLET_VIEW).getView());
+        addViewFactory(WALLET_VIEW, () -> new WalletView(WALLET_VIEW).getView());
         addLayerFactory(MENU_LAYER, () -> new SidePopupView(new DrawerManager().getDrawer()));
     }
 
@@ -35,7 +36,7 @@ public class Wooaccounting extends MobileApplication {
         Swatch.BLUE.assignTo(scene);
 
         scene.getStylesheets().add(Wooaccounting.class.getResource("style.css").toExternalForm());
-        ((Stage) scene.getWindow()).getIcons().add(new Image(Wooaccounting.class.getResourceAsStream("/com/wooaccounting/views/icon.png")));
+        ((Stage) scene.getWindow()).getIcons().add(new Image(Wooaccounting.class.getResourceAsStream("/com/wooaccounting/views/small_icon.jpg")));
     }
     
     
