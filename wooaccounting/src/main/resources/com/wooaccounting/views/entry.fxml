@@ -33,9 +33,9 @@
       </VBox>
    </bottom>
    <center>
-      <VBox alignment="TOP_CENTER" cache="true" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="112.0" scaleShape="false" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" cache="true" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="112.0" scaleShape="false" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView depthTest="DISABLE" fitHeight="93.0" fitWidth="90.0">
+            <ImageView depthTest="DISABLE" fitHeight="176.0" fitWidth="126.0" preserveRatio="true">
                <image>
                   <Image url="@icon.png" />
                </image>

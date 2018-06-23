@@ -2,7 +2,23 @@
 	-fx-background-image: url("background.png");
 }
 
-#labelwithimage {          
-    -fx-graphic: url("myImage.png");
-    -fx-graphic-text-gap : 10;
+.AnchorPane{
+	-fx-background-color: transparent;
+}
+.label {          
+	
+	-fx-background-image: url("label.png");
+	-fx-background-size: 150px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 100%;
+	-fx-background-color: transparent;
+}
+
+.button {          
+
+    -fx-background-image: url("button.png");
+    -fx-background-size: 70px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 100%;
+	-fx-background-color: transparent;
 }

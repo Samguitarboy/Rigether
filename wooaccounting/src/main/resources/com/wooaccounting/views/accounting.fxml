@@ -15,59 +15,80 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="accounting" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="350.0" stylesheets="@accounting.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.AccountingPresenter">
+<View fx:id="accounting" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="350.0" stylesheets="@accounting.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.AccountingPresenter">
    <bottom>
-      <VBox alignment="TOP_CENTER" prefHeight="219.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="208.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="350.0">
+            <HBox alignment="CENTER" prefHeight="98.0" prefWidth="350.0">
                <children>
-                  <Button fx:id="record2" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" style="-fx-scale-x: 50%; -fx-background-radius: 50%;" text="Stop">
+                  <Button fx:id="stop" alignment="CENTER" cacheShape="false" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="88.0" stylesheets="@accounting.css" text="Stop" wrapText="true">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="record21" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" style="-fx-scale-x: 50%; -fx-background-radius: 50%;" text="Start">
+                  <Button fx:id="record" alignment="CENTER" cacheShape="false" contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="86.0" stylesheets="@accounting.css" text="Start" wrapText="true">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="record22" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" style="-fx-scale-x: 50%; -fx-background-radius: 50%;" text="Edit">
+                  <Button fx:id="edit" alignment="CENTER" cacheShape="false" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="86.0" stylesheets="@accounting.css" text="Edit " wrapText="true">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
-                  </Button>
-                  <Button fx:id="record23" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" style="-fx-scale-x: 50%; -fx-background-radius: 50%;" text="Push">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="350.0">
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="350.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="84.0" prefWidth="350.0" text="Editext">
+                  <Label fx:id="speech2text" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0" style="-fx-background-size: 200; -fx-border-width: 500;" text="Editext">
                      <font>
-                        <Font size="23.0" />
+                        <Font name="OCR A Extended" size="23.0" />
                      </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </Label>
+                  <Button fx:id="enter" alignment="CENTER" cacheShape="false" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="85.0" stylesheets="@accounting.css" text="Enter" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </children>
       </VBox>
    </bottom>
    <top>
-      <ScrollPane opacity="0.56" prefHeight="457.0" prefWidth="350.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+      <ScrollPane opacity="0.66" prefHeight="393.0" prefWidth="286.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="452.0" prefWidth="348.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="452.0" prefWidth="333.0">
                <children>
-                  <VBox alignment="CENTER_LEFT" layoutY="14.0" prefHeight="34.0" prefWidth="350.0">
+                  <VBox alignment="CENTER_LEFT" layoutY="14.0" prefHeight="47.0" prefWidth="171.0">
                      <children>
-                        <Label fx:id="speech2text" alignment="TOP_LEFT" text="This is what you say" />
+                        <Label fx:id="bot" alignment="CENTER" prefHeight="37.0" prefWidth="160.0" text="吃大便" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER_RIGHT" layoutY="48.0" prefHeight="34.0" prefWidth="326.0">
+                  <VBox alignment="CENTER_RIGHT" layoutX="152.0" layoutY="48.0" prefHeight="37.0" prefWidth="173.0">
                      <children>
-                        <Label fx:id="speech2text1" alignment="TOP_CENTER" text="This is what you say" textAlignment="RIGHT" />
+                        <Label fx:id="we" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="158.0" text="我想吃義大利麵" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS">
+                           <font>
+                              <Font name="OCR A Extended" size="12.0" />
+                           </font></Label>
                      </children>
                   </VBox>
                </children>
