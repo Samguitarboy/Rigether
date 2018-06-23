@@ -7,6 +7,7 @@ import com.wooaccounting.views.ChartView;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.layout.layer.SidePopupView;
 import com.gluonhq.charm.glisten.visual.Swatch;
+import com.wooaccounting.views.WalletView;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -26,7 +27,7 @@ public class Wooaccounting extends MobileApplication {
         addViewFactory(ACCOUNTING_VIEW, () -> new AccountingView(ACCOUNTING_VIEW).getView());
         addViewFactory(CALENDAR_VIEW, () -> new CalendarView(CALENDAR_VIEW).getView());
         addViewFactory(CHART_VIEW, () -> new ChartView(CHART_VIEW).getView());
-        addViewFactory(WALLET_VIEW, () -> new ChartView(WALLET_VIEW).getView());
+        addViewFactory(WALLET_VIEW, () -> new WalletView(WALLET_VIEW).getView());
         addLayerFactory(MENU_LAYER, () -> new SidePopupView(new DrawerManager().getDrawer()));
     }
 
