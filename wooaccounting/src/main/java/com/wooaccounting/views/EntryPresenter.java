@@ -14,12 +14,10 @@ public class EntryPresenter {
     @FXML
     private Button toaccountpage;
     public void initialize() {
-        entry.showingProperty().addListener((obs, oldValue, newValue) -> {
-            if (newValue) {
-                toaccountpage.setOnAction(e -> 
-                        MobileApplication.getInstance().showLayer(Wooaccounting.MENU_LAYER));
-            }
-        });
+
+       toaccountpage.setOnAction(e -> 
+          MobileApplication.getInstance().showLayer(Wooaccounting.MENU_LAYER));
+
     }
     
 

@@ -33,15 +33,9 @@
       </VBox>
    </bottom>
    <center>
-<<<<<<< HEAD:wooaccounting/src/main/resources/com/wooaccounting/wooaccounting/views/entry.fxml
-      <VBox alignment="TOP_CENTER" cache="true" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="145.0" scaleShape="false" spacing="15.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="208.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
-=======
       <VBox alignment="TOP_CENTER" cache="true" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="112.0" scaleShape="false" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView depthTest="DISABLE" fitHeight="176.0" fitWidth="126.0" preserveRatio="true">
->>>>>>> accounting:wooaccounting/src/main/resources/com/wooaccounting/views/entry.fxml
                <image>
                   <Image url="@icon.png" />
                </image>
