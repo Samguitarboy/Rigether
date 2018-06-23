@@ -20,6 +20,7 @@ import com.google.cloud.speech.v1p1beta1.SpeechClient;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionResult;
 import com.google.protobuf.ByteString;
+import com.wooaccounting.InsertSQL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,6 +36,8 @@ public class AccountingPresenter {
     private Button record;
     @FXML
     private Button stop;
+    @FXML
+    private Button edit;
     
     public void initialize() {
         accounting.setShowTransitionFactory(BounceInRightTransition::new);
@@ -51,7 +54,7 @@ public class AccountingPresenter {
         });
 
         Microphone mic = new Microphone(FLACFileWriter.FLAC);
-        
+        InsertSQL insertdb = new InsertSQL();
         record.setOnAction(e->{recordClick(mic);});
         stop.setOnAction(e->{
             try {
@@ -59,6 +62,7 @@ public class AccountingPresenter {
             } catch (Exception ex) {
 		ex.printStackTrace();
 	}});
+         edit.setOnAction(e->{/*insertdb.recordtoDB("我今天吃鹹酥雞25塊", "鹹酥雞", 25);*/});
     }
     
     private void recordClick(Microphone mic) {
@@ -116,4 +120,5 @@ public class AccountingPresenter {
        stop.setDisable(true);
        stop.setVisible(false);
     }
+   
 }
