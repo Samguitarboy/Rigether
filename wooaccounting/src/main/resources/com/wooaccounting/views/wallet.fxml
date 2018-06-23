@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="wallet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@wallet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.WalletPresenter">
+<View fx:id="wallet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@wallet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.WalletPresenter">
    <center>
       <VBox alignment="CENTER" blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="492.0" prefWidth="350.0" spacing="15.0" stylesheets="@wallet.css" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="label2" prefHeight="62.0" prefWidth="206.0" text="存款:" VBox.vgrow="NEVER">
+            <Label fx:id="deposit" prefHeight="62.0" prefWidth="206.0" text="存款:" VBox.vgrow="NEVER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -28,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="label22" prefHeight="62.0" prefWidth="201.0" text="支出:" VBox.vgrow="NEVER">
+            <Label fx:id="expend" prefHeight="62.0" prefWidth="201.0" text="支出:" VBox.vgrow="NEVER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -43,7 +43,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="label221" prefHeight="62.0" prefWidth="201.0" text="剩餘:" textFill="#321b8d" wrapText="true" VBox.vgrow="NEVER">
+            <Label fx:id="balance" prefHeight="62.0" prefWidth="201.0" text="剩餘:" textFill="#321b8d" wrapText="true" VBox.vgrow="NEVER">
                <font>
                   <Font size="20.0" />
                </font>

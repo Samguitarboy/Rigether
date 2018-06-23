@@ -32,7 +32,7 @@ public class ChartPresenter {
 
     public void initialize() {
         
-        int entertainment=20,food=40,traffic=30,other=10;
+        int entertainment=2000,food=4000,traffic=3000,other=1200;
         int sum = entertainment+food+traffic+other;
         total.setText("Total: "+Integer.toString(sum));
         ent.setText("娛樂: "+Integer.toString(entertainment));
