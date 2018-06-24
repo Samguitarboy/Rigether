@@ -12,7 +12,7 @@
       <PieChart fx:id="piechart" BorderPane.alignment="CENTER" />
    </top>
    <right>
-      <Label fx:id="total" scaleX="2.0" scaleY="2.0" text="Total" textAlignment="RIGHT" BorderPane.alignment="CENTER">
+      <Label fx:id="total" scaleX="2.0" scaleY="2.0" text="Total: " textAlignment="RIGHT" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="138.0" right="50.0" />
          </padding>
@@ -21,22 +21,32 @@
    <center>
       <VBox alignment="CENTER" prefHeight="275.0" prefWidth="350.0" spacing="15.0" stylesheets="@chart.css" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="ent" scaleX="1.5" scaleY="1.5" text="ent">
+            <Label fx:id="ent" scaleX="1.5" scaleY="1.5" text="娛樂: ">
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="foods" scaleX="1.5" scaleY="1.5" text="food">
+            <Label fx:id="foods" scaleX="1.5" scaleY="1.5" text="食物: ">
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="traf" scaleX="1.5" scaleY="1.5" text="traf">
+            <Label fx:id="traf" scaleX="1.5" scaleY="1.5" text="交通: ">
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="others" scaleX="1.5" scaleY="1.5" text="other">
+            <Label fx:id="cloth" scaleX="1.5" scaleY="1.5" text="服飾: ">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="living" scaleX="1.5" scaleY="1.5" text="住宅: ">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="others" scaleX="1.5" scaleY="1.5" text="其他: ">
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>

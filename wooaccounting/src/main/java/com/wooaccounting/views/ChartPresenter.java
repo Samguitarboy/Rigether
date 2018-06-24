@@ -9,7 +9,6 @@ import com.wooaccounting.Wooaccounting;
 import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -25,25 +24,29 @@ public class ChartPresenter {
     @FXML
     private View chart;
     @FXML
-    private Label total, ent, foods, traf, others;
+    private Label total, ent, foods, traf, cloth, living, others;
     @FXML
     private PieChart piechart;
     
 
     public void initialize() {
         
-        int entertainment=2000,food=4000,traffic=3000,other=1200;
-        int sum = entertainment+food+traffic+other;
-        total.setText("Total: "+Integer.toString(sum));
-        ent.setText("娛樂: "+Integer.toString(entertainment));
-        foods.setText("飲食: "+Integer.toString(food));
-        traf.setText("交通: "+Integer.toString(traffic));
-        others.setText("其他: "+Integer.toString(other));
+        int entertainment=2000,food=4000,traffic=3000,cloth_v = 1500,living_v = 4500,other=1200;
+        int sum = entertainment+food+traffic+cloth_v+living_v+other;
+        total.setText(total.getText()+Integer.toString(sum));
+        ent.setText(ent.getText()+Integer.toString(entertainment));
+        foods.setText(foods.getText()+Integer.toString(food));
+        traf.setText(traf.getText()+Integer.toString(traffic));
+        cloth.setText(cloth.getText()+Integer.toString(cloth_v));
+        living.setText(living.getText()+Integer.toString(living_v));
+        others.setText(others.getText()+Integer.toString(other));
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("娛樂", entertainment),
                 new PieChart.Data("飲食", food),
-                new PieChart.Data("其他", traffic),
-                new PieChart.Data("交通", other)
+                new PieChart.Data("交通", other),
+                new PieChart.Data("服飾", cloth_v),
+                new PieChart.Data("住宅", living_v),
+                new PieChart.Data("其他", traffic)
         );
        piechart.setData(pieChartData);
        piechart.setLegendSide(Side.TOP);
