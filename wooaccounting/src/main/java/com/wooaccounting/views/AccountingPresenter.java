@@ -47,48 +47,60 @@ public class AccountingPresenter {
     private Button enter;
     @FXML
     private Button upload;
-    
+
     private String origintext;
-    
+    private int choosenum = 0;
+
     public void initialize() {
         accounting.setShowTransitionFactory(BounceInRightTransition::new);
-        
+
         accounting.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
-                appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> 
-                        MobileApplication.getInstance().showLayer(Wooaccounting.MENU_LAYER)));
+                appBar.setNavIcon(MaterialDesignIcon.MENU.button(e
+                        -> MobileApplication.getInstance().showLayer(Wooaccounting.MENU_LAYER)));
                 appBar.setTitleText("Accounting");
             }
         });
 
         Microphone mic = new Microphone(FLACFileWriter.FLAC);
-        
-        record.setOnAction(e->{recordClick(mic);});
-        stop.setOnAction(e->{
+
+        record.setOnAction(e -> {
+            recordClick(mic);
+        });
+        stop.setOnAction(e -> {
             try {
                 stopClick(mic);
             } catch (Exception ex) {
-		ex.printStackTrace();
-	}});
-         edit.setOnAction(e->{alter();});
-         enter.setOnAction(e->{changetext();});
-         upload.setOnAction(e->{uploadtodb();});
+                ex.printStackTrace();
+            }
+        });
+        edit.setOnAction(e -> {
+            alter();
+        });
+        enter.setOnAction(e -> {
+            changetext();
+        });
+        upload.setOnAction(e -> {
+            uploadtodb();
+        });
     }
-    
-    private void uploadtodb(){
+
+    private void uploadtodb() {
         InsertSQL insertdb = new InsertSQL();
-        
+
         String target = "";
         String[] arr = whatyousay.getText().split("\\d");
-        for(String s : arr)
-            target+=s;
-        
+        for (String s : arr) {
+            target += s;
+        }
+
         String number = "";
         String[] arr1 = whatyousay.getText().split("\\D");
-        for(String s : arr1)
-            number+=s;
-        
+        for (String s : arr1) {
+            number += s;
+        }
+
         insertdb.recordtoDB(origintext, target, Integer.parseInt(number));
         whatyousay.setText("What You Say");
         speech2text.setPromptText("");
@@ -99,7 +111,8 @@ public class AccountingPresenter {
         enter.setDisable(true);
         enter.setVisible(false);
     }
-    private void changetext(){
+
+    private void changetext() {
         whatyousay.setText(speech2text.getText());
         speech2text.setDisable(true);
         speech2text.setVisible(false);
@@ -108,7 +121,8 @@ public class AccountingPresenter {
         record.setDisable(false);
         record.setVisible(true);
     }
-    private void alter(){
+
+    private void alter() {
         speech2text.setDisable(false);
         speech2text.setVisible(true);
         record.setDisable(true);
@@ -116,78 +130,74 @@ public class AccountingPresenter {
         upload.setDisable(true);
         upload.setVisible(false);
     }
+
     private void recordClick(Microphone mic) {
-        
+
         System.out.println("8888");
         try {
-		mic.captureAudioToFile("./record/sound.flac");
-	} catch (Exception ex) {
-		ex.printStackTrace();
-	}
+            mic.captureAudioToFile("./record/sound.flac");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         System.out.println("YES~");
-        
-        record.setDisable(true);
-        record.setVisible(false);
-        edit.setDisable(true);
-        edit.setVisible(false);
-        enter.setDisable(true);
-        enter.setVisible(false);
-        stop.setDisable(false);
-        stop.setVisible(true);
-        upload.setDisable(true);
-        upload.setVisible(false);
+
+
     }
-    private void stopClick(Microphone mic)  throws Exception  {
-       mic.close();
-           // Instantiates a client
-    try (SpeechClient speechClient = SpeechClient.create()) {
 
-      // The path to the audio file to transcribe
-      String fileName = "./record/sound.flac";
+    private void stopClick(Microphone mic) throws Exception {
+        mic.close();
+        // Instantiates a client
+        try (SpeechClient speechClient = SpeechClient.create()) {
 
-      // Reads the audio file into memory
-      Path path = Paths.get(fileName);
-      byte[] data = Files.readAllBytes(path);
-      ByteString audioBytes = ByteString.copyFrom(data);
+            // The path to the audio file to transcribe
+            String fileName = "./record/sound.flac";
 
-      // Builds the sync recognize request
-      RecognitionConfig config = RecognitionConfig.newBuilder()
-          .setEncoding(AudioEncoding.FLAC)
-          .setSampleRateHertz(44100)
-          .setLanguageCode("cmn-Hant-TW")
-          .build();
-      RecognitionAudio audio = RecognitionAudio.newBuilder()
-          .setContent(audioBytes)
-          .build();
+            // Reads the audio file into memory
+            Path path = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(path);
+            ByteString audioBytes = ByteString.copyFrom(data);
 
-      // Performs speech recognition on the audio file
-      RecognizeResponse response = speechClient.recognize(config, audio);
-      List<SpeechRecognitionResult> results = response.getResultsList();
+            // Builds the sync recognize request
+            RecognitionConfig config = RecognitionConfig.newBuilder()
+                    .setEncoding(AudioEncoding.FLAC)
+                    .setSampleRateHertz(44100)
+                    .setLanguageCode("cmn-Hant-TW")
+                    .build();
+            RecognitionAudio audio = RecognitionAudio.newBuilder()
+                    .setContent(audioBytes)
+                    .build();
 
-      for (SpeechRecognitionResult result : results) {
-        // There can be several alternative transcripts for a given chunk of speech. Just use the
-        // first (most likely) one here.
-        SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
-        System.out.printf("Transcription: %s%n", alternative.getTranscript());
-        origintext = alternative.getTranscript();
-       
-        whatyousay.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
-                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", ""));
-        
-        speech2text.setPromptText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
-                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", ""));
-      }
+            // Performs speech recognition on the audio file
+            RecognizeResponse response = speechClient.recognize(config, audio);
+            List<SpeechRecognitionResult> results = response.getResultsList();
+
+            for (SpeechRecognitionResult result : results) {
+                // There can be several alternative transcripts for a given chunk of speech. Just use the
+                // first (most likely) one here.
+                SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
+                System.out.printf("Transcription: %s%n", alternative.getTranscript());
+
+                if (0 == "1".compareTo(alternative.getTranscript())) {
+                    
+                }
+                else if (0 == "2".compareTo(alternative.getTranscript())) {
+
+                }
+                else if (0 == "3".compareTo(alternative.getTranscript())) {
+
+                }
+                else{
+                    origintext = alternative.getTranscript();
+
+                    whatyousay.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
+                            .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", ""));
+
+                    speech2text.setPromptText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
+                            .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", ""));
+                }
+            }
+        }
+
     }
-       record.setDisable(false);
-       record.setVisible(true);
-       edit.setDisable(false);
-       edit.setVisible(true);
-       enter.setDisable(false);
-       enter.setVisible(true);
-       stop.setDisable(true);
-       stop.setVisible(false);
-       upload.setDisable(false);
-       upload.setVisible(true);
-    }
-   
+
 }

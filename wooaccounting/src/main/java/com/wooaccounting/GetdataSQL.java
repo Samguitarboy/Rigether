@@ -25,7 +25,7 @@ public class GetdataSQL {
         config con = new config();
         String connectionStr = "jdbc:mysql://" + con.getUrlstr() + "/" + con.getDBName() + "?user=" + con.getUserstr() + "&password=" + con.getPw();
         String querynum = "select count(*) from Accounting where recordDate ='"+date+"'";
-        String querydate = "select target,price,recordDate from Accounting where recordDate ='"+date+"'";
+        String querydate = "select target,price,modifiedTime from Accounting where recordDate ='"+date+"'";
         String returndata = "";
         MySQLConnector MSC_query = new MySQLConnector();
         MSC_query.connectDB(connectionStr);

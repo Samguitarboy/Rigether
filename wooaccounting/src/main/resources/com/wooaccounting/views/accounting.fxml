@@ -64,7 +64,7 @@
             <HBox alignment="CENTER" prefHeight="64.0" prefWidth="224.0">
                <children>
                  
-                  <Label fx:id="whatyousay" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0" style="-fx-background-size: 200; -fx-border-width: 500;" text="What You Say">
+                  <Label fx:id="whatyousay" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0" style="-fx-background-size: 200; -fx-border-width: 500;" text="What You Say" visible="false">
 
                      <font>
                         <Font name="OCR A Extended" size="23.0" />
@@ -89,21 +89,60 @@
                   <ScrollPane opacity="0.66" prefHeight="355.0" prefWidth="350.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
 
                     <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="452.0" prefWidth="333.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="789.0" prefWidth="333.0">
                <children>
-                  <VBox alignment="CENTER_LEFT" layoutY="14.0" prefHeight="47.0" prefWidth="171.0">
+                  <VBox alignment="CENTER_LEFT" layoutY="14.0" prefHeight="47.0" prefWidth="330.0">
                      <children>
-                        <Label fx:id="bot" alignment="CENTER" prefHeight="37.0" prefWidth="160.0" text="吃大便" />
-
+                        <Label fx:id="bot" prefHeight="37.0" prefWidth="175.0" text="Hi , 我是Regether">
+                           <padding>
+                              <Insets left="35.0" />
+                           </padding>
+                        </Label>
+            
                                  </children>
                   </VBox>
-                  <VBox alignment="CENTER_RIGHT" layoutX="152.0" layoutY="48.0" prefHeight="37.0" prefWidth="173.0">
+                  <VBox alignment="CENTER_LEFT" layoutY="60.0" prefHeight="47.0" prefWidth="330.0">
                      <children>
-                        <Label fx:id="we" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="158.0" text="我想吃義大利麵" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS">
-
-                                       <font>
-                              <Font name="OCR A Extended" size="12.0" />
-                           </font>
+                        <Label prefHeight="37.0" prefWidth="175.0" text="很高興為您服務！">
+                           <padding>
+                              <Insets left="35.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" layoutY="108.0" prefHeight="47.0" prefWidth="330.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="175.0" text="目前我們有三大功能：">
+                           <padding>
+                              <Insets left="35.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" layoutY="155.0" prefHeight="47.0" prefWidth="330.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="175.0" text="想要記錄支出請說  &quot;1&quot;">
+                           <padding>
+                              <Insets left="35.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" layoutY="202.0" prefHeight="47.0" prefWidth="330.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="175.0" text="想要記錄收入請說  &quot;2&quot;">
+                           <padding>
+                              <Insets left="35.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" layoutY="249.0" prefHeight="47.0" prefWidth="330.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="175.0" text="看錢包剩多少錢說  &quot;3&quot;">
+                           <padding>
+                              <Insets left="35.0" />
+                           </padding>
                         </Label>
                      </children>
                   </VBox>
@@ -125,4 +164,7 @@
         </content>
       </ScrollPane>
    </top>
+   <left>
+      <VBox alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="173.0" BorderPane.alignment="CENTER" />
+   </left>
 </View>
