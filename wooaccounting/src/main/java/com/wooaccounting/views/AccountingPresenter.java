@@ -69,7 +69,7 @@ public class AccountingPresenter {
                 appBar.setTitleText("Accounting");
             }
         });
-
+        BOT_default();
         Microphone mic = new Microphone(FLACFileWriter.FLAC);
 
         record.setOnAction(e -> {
@@ -184,11 +184,11 @@ public class AccountingPresenter {
 
                 whatyousay.setDisable(false);
                 whatyousay.setVisible(true);
-                
+
                 VBox v = new VBox();
                 v.setAlignment(Pos.CENTER_RIGHT);
                 v.setPrefSize(330, 47);
-                v.setLayoutY(46 * count -37);
+                v.setLayoutY(46 * count - 37);
                 count++;
                 Label newtext = new Label("我說1,我要記錄支出 !");
                 newtext.setPrefSize(175, 37);
@@ -203,4 +203,76 @@ public class AccountingPresenter {
 
     }
 
+    private void BOT_default() {
+        VBox v = new VBox();
+        v.setAlignment(Pos.CENTER_LEFT);
+        v.setPrefSize(330, 47);
+        v.setLayoutY(46 * count - 37);
+        v.maxHeightProperty().bind( v.heightProperty());
+        count++;
+        Label newtext = new Label("Hi , 我是Rigether");
+        newtext.setPrefSize(175, 37);
+        newtext.setAlignment(Pos.CENTER_LEFT);
+        newtext.setPadding(new Insets(35));
+        
+        v.getChildren().add(newtext);
+
+        VBox v1 = new VBox();
+        v1.setAlignment(Pos.CENTER_LEFT);
+        v1.setPrefSize(330, 47);
+        v1.setLayoutY(46 * count - 37);
+        count++;
+        Label newtext1 = new Label("很高興為您服務！");
+        newtext1.setPrefSize(175, 37);
+        newtext1.setAlignment(Pos.CENTER_LEFT);
+        newtext1.setPadding(new Insets(35));
+        v1.getChildren().add(newtext1);
+
+        VBox v2 = new VBox();
+        v2.setAlignment(Pos.CENTER_LEFT);
+        v2.setPrefSize(330, 47);
+        v2.setLayoutY(46 * count - 37);
+        count++;
+        Label newtext2 = new Label("目前我們有三大功能：");
+        newtext2.setPrefSize(175, 37);
+        newtext2.setAlignment(Pos.CENTER_LEFT);
+        newtext2.setPadding(new Insets(35));
+        v2.getChildren().add(newtext1);
+
+        VBox v3 = new VBox();
+        v3.setAlignment(Pos.CENTER_LEFT);
+        v3.setPrefSize(330, 47);
+        v3.setLayoutY(46 * count - 37);
+        count++;
+        Label newtext3 = new Label("記錄支出請說  \"支出\"");
+        newtext3.setPrefSize(175, 37);
+        newtext3.setAlignment(Pos.CENTER_LEFT);
+        newtext3.setPadding(new Insets(35));
+        v3.getChildren().add(newtext3);
+
+        VBox v4 = new VBox();
+        v4.setAlignment(Pos.CENTER_LEFT);
+        v4.setPrefSize(330, 47);
+        v4.setLayoutY(46 * count - 37);
+        count++;
+        Label newtext4 = new Label("記錄收入請說  \"收入\"");
+        newtext4.setPrefSize(175, 37);
+        newtext4.setAlignment(Pos.CENTER_LEFT);
+        newtext4.setPadding(new Insets(35));
+        v4.getChildren().add(newtext4);
+
+        VBox v5 = new VBox();
+        v5.setAlignment(Pos.CENTER_LEFT);
+        v5.setPrefSize(330, 47);
+        v5.setLayoutY(46 * count - 37);
+        count++;
+        Label newtext5 = new Label("剩多少錢說  \"錢包\"");
+        newtext5.setPrefSize(175, 37);
+        newtext5.setAlignment(Pos.CENTER_LEFT);
+        newtext5.setPadding(new Insets(35));
+        v5.getChildren().add(newtext5);
+
+        wordpane.getChildren().addAll(v, v1, v2, v3, v4, v5);
+
+    }
 }
