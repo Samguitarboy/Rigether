@@ -104,9 +104,9 @@ public class GetdataSQL {
         MSC_query2.doquery(querytime);
                
         for(int i=0;i < count;i++){
-            returndata += MSC_query.getResult().toString().split("\n")[i]+
-                     MSC_query2.getResult().toString().split("\n")[i].substring(10)
-                    +"\n";
+            String str =  MSC_query2.getResult().toString().split("\n")[i].substring(10);
+            String str2 = str.substring(0,str.length()-3);
+            returndata += MSC_query.getResult().toString().split("\n")[i]+ str2 +"\n";
         }
         MSC_query.clearresult();
         MSC_query2.clearresult();

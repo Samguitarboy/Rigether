@@ -14,6 +14,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import com.wooaccounting.GetdataSQL;
 import java.util.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 
 
@@ -48,6 +51,7 @@ public class CalendarPresenter {
         });
         
         datepicker.setValue(LocalDate.now());
+        lbls.add(label);
         setUI();
     }
     
@@ -72,8 +76,17 @@ public class CalendarPresenter {
         for(int i =0;i<lbls.size();++i)
             wordpane.getChildren().remove(lbls.get(i));
         lbls.clear();
-        for(int i=lbls.size();i<count;++i)
-            lbls.add(new Label());
+        
+        for(int i=0;i<count;++i)
+        {
+            Image img1 = new Image("/com/wooaccounting/views/small_icon.jpg");
+            ImageView im = new ImageView(img1);
+            im.setFitHeight(30);
+            im.setFitWidth(30);
+            im.setLayoutY(46 * i);
+            lbls.add(new Label("",im));
+        }
+            
         
     }
     
