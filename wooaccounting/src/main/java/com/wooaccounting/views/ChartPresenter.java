@@ -61,7 +61,7 @@ public class ChartPresenter {
        DoubleBinding total = Bindings.createDoubleBinding(() ->
        pieChartData.stream().collect(Collectors.summingDouble(PieChart.Data::getPieValue)), pieChartData);
        
-       for (final PieChart.Data data : piechart.getData()) {
+       /*for (final PieChart.Data data : piechart.getData()) {
         data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
             e -> {
                 caption.setTranslateX(e.getSceneX());
@@ -70,7 +70,7 @@ public class ChartPresenter {
                 caption.setText(text);
              }
             );
-    }
+    }*/
 
         chart.setShowTransitionFactory(BounceInRightTransition::new);
         chart.showingProperty().addListener((obs, oldValue, newValue) -> {
