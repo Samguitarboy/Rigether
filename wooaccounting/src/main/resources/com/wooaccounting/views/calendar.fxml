@@ -23,8 +23,11 @@
          <children>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="339.0">
                <children>
-                  <DatePicker fx:id="datepicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="39.0" prefWidth="207.0" />
-                  <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="38.0" prefWidth="61.0" style="-fx-font-size: 12;" text="Search">
+                  <DatePicker fx:id="datepicker" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="31.0" prefWidth="207.0" style="-fx-background-color: #FFFFFF;">
+                     <cursor>
+                        <Cursor fx:constant="NONE" />
+                     </cursor></DatePicker>
+                  <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="32.0" prefWidth="61.0" style="-fx-font-size: 12;" text="Search">
                      <font>
                         <Font size="10.0" />
                      </font>

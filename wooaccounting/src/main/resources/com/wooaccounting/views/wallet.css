@@ -1,3 +1,6 @@
 .view {
 	-fx-background-image: url("background.png");
 }
+.label{
+    -fx-font-family: "OCR A Extended";
+}

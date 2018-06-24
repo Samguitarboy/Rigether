@@ -9,11 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="wallet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@wallet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.WalletPresenter">
-   <center>
-      <VBox alignment="CENTER" blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="492.0" prefWidth="350.0" spacing="15.0" stylesheets="@wallet.css" BorderPane.alignment="CENTER">
+<View fx:id="wallet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@wallet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.WalletPresenter">
+   <top>
+      <VBox alignment="CENTER" blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="534.0" prefWidth="350.0" spacing="15.0" stylesheets="@wallet.css" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="deposit" prefHeight="62.0" prefWidth="206.0" text="存款:" VBox.vgrow="NEVER">
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="365.0" style="-fx-background-color: #FF0000; -fx-font-size: 23;" text="本周收支平衡表">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="deposit" prefHeight="62.0" prefWidth="206.0" style="-fx-font-size: 18;" text="上週盈餘:" VBox.vgrow="NEVER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -28,7 +33,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="expend" prefHeight="62.0" prefWidth="201.0" text="支出:" VBox.vgrow="NEVER">
+            <Label fx:id="income" prefHeight="62.0" prefWidth="206.0" style="-fx-font-size: 18;" text="收入:">
                <font>
                   <Font size="20.0" />
                </font>
@@ -43,7 +48,22 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="balance" prefHeight="62.0" prefWidth="201.0" text="剩餘:" textFill="#321b8d" wrapText="true" VBox.vgrow="NEVER">
+            <Label fx:id="expend" prefHeight="62.0" prefWidth="201.0" style="-fx-font-size: 18;" text="支出:" VBox.vgrow="NEVER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="55.0" fitWidth="45.0" focusTraversable="true" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@small_icon.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="NONE" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="balance" prefHeight="62.0" prefWidth="201.0" style="-fx-font-size: 18;" text="本週盈餘:" textFill="#321b8d" wrapText="true" VBox.vgrow="NEVER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -63,5 +83,5 @@
             <Cursor fx:constant="NONE" />
          </cursor>
       </VBox>
-   </center>
+   </top>
 </View>
