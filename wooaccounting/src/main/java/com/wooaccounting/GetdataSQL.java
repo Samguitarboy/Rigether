@@ -86,7 +86,8 @@ public class GetdataSQL {
         config con = new config();
         String connectionStr = "jdbc:mysql://" + con.getUrlstr() + "/" + con.getDBName() + "?user=" + con.getUserstr() + "&password=" + con.getPw();
         String querynum = "select count(*) from Accounting where recordDate ='"+date+"'";
-        String querydate = "select target,price,modifiedTime from Accounting where recordDate ='"+date+"'";
+        String querydate = "select target,price from Accounting where recordDate ='"+date+"'";
+        String querytime = "select modifiedTime from Accounting where recordDate ='"+date+"'";
         String returndata = "";
         MySQLConnector MSC_query = new MySQLConnector();
         MSC_query.connectDB(connectionStr);
@@ -96,10 +97,19 @@ public class GetdataSQL {
         MSC_query.clearresult();
         
         MSC_query.doquery(querydate);
+        
+        
+        MySQLConnector MSC_query2 = new MySQLConnector();
+        MSC_query2.connectDB(connectionStr);       
+        MSC_query2.doquery(querytime);
+               
         for(int i=0;i < count;i++){
-            returndata += MSC_query.getResult().toString().split("\n")[i]+"\n";
+            returndata += MSC_query.getResult().toString().split("\n")[i]+
+                     MSC_query2.getResult().toString().split("\n")[i].substring(10)
+                    +"\n";
         }
         MSC_query.clearresult();
+        MSC_query2.clearresult();
         return  returndata;
     }
 }

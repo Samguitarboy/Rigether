@@ -10,8 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import java.time.LocalDate;
 import javafx.scene.control.Label;
-import com.wooaccounting.GetdataSQL;
 import javafx.scene.control.DatePicker;
+import javafx.scene.layout.AnchorPane;
+import com.wooaccounting.GetdataSQL;
+import java.util.*;
+
+
 
 public class CalendarPresenter {
 
@@ -23,6 +27,10 @@ public class CalendarPresenter {
     private Label label;
     @FXML
     private DatePicker datepicker;
+    @FXML
+    private AnchorPane wordpane;
+    
+    private List<Label> lbls = new ArrayList<Label>();
     public void initialize() {
         calendar.setShowTransitionFactory(BounceInRightTransition::new);
         
@@ -35,13 +43,38 @@ public class CalendarPresenter {
             }
         });
         
-        btnSearch.setOnAction(e->{
-            GetdataSQL d = new GetdataSQL();
-            LocalDate select = datepicker.getValue();
-            label.setText(d.searchdate(select.toString()));
+       btnSearch.setOnAction(e->{
+            setUI();
         });
         
         datepicker.setValue(LocalDate.now());
+        setUI();
+    }
+    
+    void setUI()
+    {
+        GetdataSQL d = new GetdataSQL();
+        LocalDate select = datepicker.getValue();
+        String [] data = d.searchdate(select.toString()).split("\n");
+        clear_and_new_lbls(data.length);
+        
+        for(int i=0;i<data.length;++i)
+        {
+            lbls.get(i).setText(data[i]);
+            lbls.get(i).setLayoutY(46 * i);
+            wordpane.getChildren().add(0,lbls.get(i));          
+        }
+
+    }
+    
+    void clear_and_new_lbls(int count)
+    {
+        for(int i =0;i<lbls.size();++i)
+            wordpane.getChildren().remove(lbls.get(i));
+        lbls.clear();
+        for(int i=lbls.size();i<count;++i)
+            lbls.add(new Label());
+        
     }
     
     
