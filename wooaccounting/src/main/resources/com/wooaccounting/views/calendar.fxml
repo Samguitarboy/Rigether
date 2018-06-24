@@ -1,19 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.mvc.View?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <View fx:id="calendar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@calendar.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.CalendarPresenter">
    <center>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="299.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="338.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="datepicker" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="8.0" prefWidth="210.0" VBox.vgrow="NEVER" />
-            <Button fx:id="btnSearch" mnemonicParsing="false" text="Search" />
-            <Label fx:id="label" prefHeight="37.0" prefWidth="222.0" />
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="339.0">
+               <children>
+                  <DatePicker fx:id="datepicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="39.0" prefWidth="207.0" />
+                  <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="38.0" prefWidth="61.0" style="-fx-font-size: 12;" text="Search">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.66" prefHeight="507.0" prefWidth="342.0" style="-fx-background-color: transparent;">
+               <content>
+                  <AnchorPane fx:id="wordpane" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="501.0" prefWidth="348.0">
+                     <cursor>
+                        <Cursor fx:constant="NONE" />
+                     </cursor>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                     <children>
+                        <VBox layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+                        <Label fx:id="label" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="262.0" textFill="#321b8d" wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView blendMode="MULTIPLY" fitHeight="32.0" fitWidth="41.0" focusTraversable="true" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@small_icon.jpg" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="NONE" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
    </center>
