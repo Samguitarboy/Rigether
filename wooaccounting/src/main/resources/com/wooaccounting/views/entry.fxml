@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="entry" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="278.0" scaleShape="false" stylesheets="@entry.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.EntryPresenter">
+<View fx:id="entry" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="278.0" scaleShape="false" stylesheets="@entry.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.EntryPresenter">
    <cursor>
       <Cursor fx:constant="NW_RESIZE" />
    </cursor>
    <bottom>
       <VBox alignment="TOP_CENTER" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="120.0" prefWidth="123.0" scaleShape="false" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="toaccountpage" alignment="TOP_CENTER" cacheShape="false" centerShape="false" contentDisplay="RIGHT" defaultButton="true" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="97.0" scaleShape="false" snapToPixel="false" text="Let's go!" textAlignment="CENTER" textOverrun="CLIP">
+            <Button fx:id="toaccountpage" alignment="TOP_CENTER" cacheShape="false" centerShape="false" contentDisplay="RIGHT" defaultButton="true" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="97.0" scaleShape="false" snapToPixel="false" text="Let's go!" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font size="17.0" />
                </font>

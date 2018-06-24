@@ -5,56 +5,74 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<View fx:id="chart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@chart.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.ChartPresenter">
+<View fx:id="chart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" stylesheets="@chart.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.ChartPresenter">
    <top>
-      <PieChart fx:id="piechart" BorderPane.alignment="CENTER" />
+      <PieChart fx:id="piechart" prefHeight="377.0" prefWidth="350.0" BorderPane.alignment="CENTER" />
    </top>
-   <right>
-      <Label fx:id="total" scaleX="2.0" scaleY="2.0" text="Total: " textAlignment="RIGHT" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets bottom="138.0" right="50.0" />
-         </padding>
-      </Label>
-   </right>
-   <center>
-      <VBox alignment="CENTER" prefHeight="275.0" prefWidth="350.0" spacing="15.0" stylesheets="@chart.css" BorderPane.alignment="CENTER">
+   <bottom>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="ent" scaleX="1.5" scaleY="1.5" text="娛樂: ">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="foods" scaleX="1.5" scaleY="1.5" text="食物: ">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="traf" scaleX="1.5" scaleY="1.5" text="交通: ">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="cloth" scaleX="1.5" scaleY="1.5" text="服飾: ">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="living" scaleX="1.5" scaleY="1.5" text="住宅: ">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="others" scaleX="1.5" scaleY="1.5" text="其他: ">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
+            <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="104.0" prefWidth="350.0">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="184.0" spacing="15.0" stylesheets="@chart.css">
+                     <children>
+                        <Label fx:id="ent" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #0049d1;" text="娛樂: " textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="OCR A Extended" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="traf" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #0049d1;" text="交通: " textFill="#fffefe">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="living" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #0049d1;" text="住宅: " textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="180.0" left="20.0" right="100.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="150.0" spacing="15.0" stylesheets="@chart.css">
+                     <children>
+                        <Label fx:id="cloth" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #0049d1;" text="服飾:" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="foods" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #0049d1;" text="食物:" textFill="#fffdfd">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="others" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #0049d1;" text="其他:" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="180.0" left="20.0" right="100.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label fx:id="total" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="342.0" style="-fx-font-size: 40;" text="Total:" textFill="#e80000">
+               <font>
+                  <Font size="50.0" />
+               </font>
             </Label>
          </children>
-         <padding>
-            <Insets bottom="180.0" left="20.0" right="100.0" />
-         </padding>
       </VBox>
-   </center>
+   </bottom>
 </View>

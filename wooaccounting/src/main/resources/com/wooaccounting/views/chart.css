@@ -14,3 +14,7 @@
    -fx-background-color:  #fafad2;
    -fx-stroke: #daa520;
 }
+
+.label{
+    -fx-font-family: "OCR A Extended";
+}
