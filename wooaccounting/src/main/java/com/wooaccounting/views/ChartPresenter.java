@@ -5,6 +5,7 @@ import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import com.wooaccounting.GetdataSQL;
 import com.wooaccounting.Wooaccounting;
 import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
@@ -31,6 +32,10 @@ public class ChartPresenter {
 
     public void initialize() {
         
+        GetdataSQL data = new GetdataSQL();
+        String test = data.searchall();
+        String testv = data.classify("公車");
+        System.out.print(testv);
         int entertainment=2000,food=4000,traffic=3000,cloth_v = 1500,living_v = 4500,other=1200;
         int sum = entertainment+food+traffic+cloth_v+living_v+other;
         total.setText(total.getText()+Integer.toString(sum));
