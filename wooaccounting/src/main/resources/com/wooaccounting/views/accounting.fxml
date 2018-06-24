@@ -22,7 +22,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="98.0" prefWidth="271.0">
                <children>
-                  <Button fx:id="stop" alignment="CENTER" cacheShape="false" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="73.0" stylesheets="@accounting.css" text="Stop" wrapText="true">
+                  <Button fx:id="stop" alignment="CENTER" cacheShape="false" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="73.0" stylesheets="@accounting.css" text="Stop" visible="false" wrapText="true">
 
                      <opaqueInsets>
                         <Insets />
@@ -42,7 +42,7 @@
                      </font>
                   </Button>
 
-                  <Button fx:id="edit" alignment="CENTER" cacheShape="false" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="72.0" stylesheets="@accounting.css" text="Edit " wrapText="true">
+                  <Button fx:id="edit" alignment="CENTER" cacheShape="false" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="72.0" stylesheets="@accounting.css" text="Edit " visible="false" wrapText="true">
 
                      <opaqueInsets>
                         <Insets />
@@ -51,7 +51,7 @@
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="upload" alignment="CENTER" cacheShape="false" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="72.0" stylesheets="@accounting.css" text="Upload" wrapText="true">
+                  <Button fx:id="upload" alignment="CENTER" cacheShape="false" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="72.0" stylesheets="@accounting.css" text="Upload" visible="false" wrapText="true">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -64,7 +64,7 @@
             <HBox alignment="CENTER" prefHeight="64.0" prefWidth="224.0">
                <children>
                  
-                  <Label fx:id="whatyousay" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0" style="-fx-background-size: 200; -fx-border-width: 500;" text="What You Say">
+                  <Label fx:id="whatyousay" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0" style="-fx-background-size: 200; -fx-border-width: 500;" text="What You Say" visible="false">
 
                      <font>
                         <Font name="OCR A Extended" size="23.0" />
@@ -73,7 +73,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Button fx:id="enter" disable="true" mnemonicParsing="false" prefHeight="63.0" prefWidth="68.0" text="Enter" />
+                  <Button fx:id="enter" disable="true" mnemonicParsing="false" prefHeight="63.0" prefWidth="68.0" text="Enter" visible="false" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="64.0" prefWidth="224.0">
@@ -86,7 +86,7 @@
    </bottom>
    <top>
 
-                  <ScrollPane opacity="0.66" prefHeight="355.0" prefWidth="350.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+                  <ScrollPane fx:id="scrollpane" opacity="0.66" prefHeight="355.0" prefWidth="350.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
 
                     <content>
           <AnchorPane fx:id="wordpane" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="789.0" prefWidth="333.0">

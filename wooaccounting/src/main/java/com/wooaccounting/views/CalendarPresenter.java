@@ -17,9 +17,6 @@ import java.util.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
-
-
 public class CalendarPresenter {
 
     @FXML
@@ -34,6 +31,7 @@ public class CalendarPresenter {
     private AnchorPane wordpane;
     
     private List<Label> lbls = new ArrayList<Label>();
+    
     public void initialize() {
         calendar.setShowTransitionFactory(BounceInRightTransition::new);
         
@@ -68,6 +66,8 @@ public class CalendarPresenter {
             lbls.get(i).setLayoutY(46 * i);
             wordpane.getChildren().add(0,lbls.get(i));          
         }
+        if(data.length==1)
+            lbls.get(0).setText(" 今日尚無記錄(´・ω・`)");
 
     }
     
