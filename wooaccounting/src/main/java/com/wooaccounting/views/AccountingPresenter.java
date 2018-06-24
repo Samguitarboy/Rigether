@@ -26,13 +26,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import javafx.scene.control.TextField;
 
 public class AccountingPresenter {
 
     @FXML
     private View accounting;
     @FXML
-    private Label speech2text;
+    private Label whatyousay;
+    @FXML
+    private TextField speech2text;
     @FXML
     private Label bot;
     @FXML
@@ -41,6 +44,12 @@ public class AccountingPresenter {
     private Button stop;
     @FXML
     private Button edit;
+    @FXML
+    private Button enter;
+    @FXML
+    private Button upload;
+    
+    private String origintext;
     
     public void initialize() {
         accounting.setShowTransitionFactory(BounceInRightTransition::new);
@@ -51,13 +60,11 @@ public class AccountingPresenter {
                 appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> 
                         MobileApplication.getInstance().showLayer(Wooaccounting.MENU_LAYER)));
                 appBar.setTitleText("Accounting");
-                appBar.getActionItems().add(MaterialDesignIcon.FAVORITE.button(e -> 
-                        System.out.println("Favorite")));
             }
         });
 
         Microphone mic = new Microphone(FLACFileWriter.FLAC);
-        InsertSQL insertdb = new InsertSQL();
+        
         record.setOnAction(e->{recordClick(mic);});
         stop.setOnAction(e->{
             try {
@@ -65,13 +72,33 @@ public class AccountingPresenter {
             } catch (Exception ex) {
 		ex.printStackTrace();
 	}});
-         //edit.setOnAction(e->{insertdb.recordtoDB("我今天吃雞排50塊", "雞排", 50);});
-         edit.setOnAction(e->{test();});
+         edit.setOnAction(e->{alter();});
+         enter.setOnAction(e->{changetext();});
+         upload.setOnAction(e->{uploadtodb();});
     }
-    private void test(){
-        GetdataSQL getdb = new GetdataSQL();
-        //System.out.print(getdb.searchall());
-        //bot.setText(getdb.searchdate("2018-06-23"));
+    
+    private void uploadtodb(){
+        InsertSQL insertdb = new InsertSQL();
+        //insertdb.recordtoDB(origintext, whatyousay.getText(), 0);
+        String[] arr=whatyousay.getText().split("\\D");
+        for(String s:arr)
+            System.out.print(s);
+        
+        whatyousay.setText("What You Say");
+        speech2text.setPromptText("");
+    }
+    private void changetext(){
+        whatyousay.setText(speech2text.getText());
+        speech2text.setDisable(true);
+        speech2text.setVisible(false);
+        upload.setDisable(false);
+        upload.setVisible(true);
+    }
+    private void alter(){
+        speech2text.setDisable(false);
+        speech2text.setVisible(true);
+        upload.setDisable(true);
+        upload.setVisible(false);
     }
     private void recordClick(Microphone mic) {
         
@@ -85,6 +112,10 @@ public class AccountingPresenter {
         
         record.setDisable(true);
         record.setVisible(false);
+        edit.setDisable(true);
+        edit.setVisible(false);
+        enter.setDisable(true);
+        enter.setVisible(false);
         stop.setDisable(false);
         stop.setVisible(true);
     }
@@ -120,14 +151,24 @@ public class AccountingPresenter {
         // first (most likely) one here.
         SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
         System.out.printf("Transcription: %s%n", alternative.getTranscript());
-        speech2text.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
-                                                 .replace("塊", "").replace("元", "").replace("昨天", ""));
+        origintext = alternative.getTranscript();
+        whatyousay.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
+                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", ""));
+        
+        speech2text.setPromptText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
+                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", ""));
       }
     }
        record.setDisable(false);
        record.setVisible(true);
+       edit.setDisable(false);
+       edit.setVisible(true);
+       enter.setDisable(false);
+       enter.setVisible(true);
        stop.setDisable(true);
        stop.setVisible(false);
+       upload.setDisable(false);
+       upload.setVisible(true);
     }
    
 }

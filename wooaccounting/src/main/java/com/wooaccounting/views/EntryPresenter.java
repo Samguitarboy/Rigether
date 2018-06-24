@@ -14,7 +14,6 @@ public class EntryPresenter {
     @FXML
     private Button toaccountpage;
     public void initialize() {
-
        toaccountpage.setOnAction(e -> 
           MobileApplication.getInstance().showLayer(Wooaccounting.MENU_LAYER));
 

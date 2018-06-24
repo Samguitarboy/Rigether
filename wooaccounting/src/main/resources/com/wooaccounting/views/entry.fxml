@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<View fx:id="entry" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="278.0" scaleShape="false" stylesheets="@entry.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.EntryPresenter">
+<View fx:id="entry" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="278.0" scaleShape="false" stylesheets="@entry.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wooaccounting.views.EntryPresenter">
    <cursor>
       <Cursor fx:constant="NW_RESIZE" />
    </cursor>
@@ -40,7 +40,7 @@
                   <Image url="@icon.png" />
                </image>
             </ImageView>
-            <Label fx:id="label11" alignment="CENTER" cacheShape="false" centerShape="false" contentDisplay="TOP" ellipsisString="" focusTraversable="false" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="54.0" prefWidth="139.0" scaleShape="false" text="Rigether" textAlignment="CENTER" textFill="#8a3418" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="NEVER">
+            <Label alignment="CENTER" cacheShape="false" centerShape="false" contentDisplay="TOP" ellipsisString="" focusTraversable="false" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="54.0" prefWidth="139.0" scaleShape="false" text="Rigether" textAlignment="CENTER" textFill="#8a3418" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="NEVER">
                <font>
                   <Font name="Monotype Corsiva" size="33.0" />
                </font>

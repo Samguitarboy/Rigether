@@ -34,7 +34,6 @@ public class Wooaccounting extends MobileApplication {
     @Override
     public void postInit(Scene scene) {
         Swatch.BLUE.assignTo(scene);
-        
         ((Stage) scene.getWindow()).getIcons().add(new Image(Wooaccounting.class.getResourceAsStream("/com/wooaccounting/views/small_icon.jpg")));
     }
     

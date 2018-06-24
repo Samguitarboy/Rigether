@@ -36,7 +36,7 @@ public class DrawerManager {
         final Item calendarItem = new ViewItem("Calendar", MaterialDesignIcon.DASHBOARD.graphic(), CALENDAR_VIEW);
         final Item chartItem = new ViewItem("Chart", MaterialDesignIcon.DASHBOARD.graphic(), CHART_VIEW);
         final Item walletItem = new ViewItem("Wallet", MaterialDesignIcon.DASHBOARD.graphic(), WALLET_VIEW);
-        drawer.getItems().addAll(entryItem, accountingItem,calendarItem,chartItem,walletItem);
+        drawer.getItems().addAll( accountingItem,calendarItem,chartItem,walletItem);
         
         if (Platform.isDesktop()) {
             final Item quitItem = new Item("Quit", MaterialDesignIcon.EXIT_TO_APP.graphic());
@@ -51,8 +51,6 @@ public class DrawerManager {
         drawer.addEventHandler(NavigationDrawer.ITEM_SELECTED, 
                 e -> MobileApplication.getInstance().hideLayer(MENU_LAYER));
         
-        MobileApplication.getInstance().viewProperty().addListener((obs, oldView, newView) -> updateItem(newView.getName()));
-        updateItem(ENTRY_VIEW);
     }
     
     private void updateItem(String nameView) {
