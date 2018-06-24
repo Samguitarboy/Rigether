@@ -20,7 +20,6 @@ import com.google.cloud.speech.v1p1beta1.SpeechClient;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionResult;
 import com.google.protobuf.ByteString;
-import com.wooaccounting.GetdataSQL;
 import com.wooaccounting.InsertSQL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -79,13 +78,26 @@ public class AccountingPresenter {
     
     private void uploadtodb(){
         InsertSQL insertdb = new InsertSQL();
-        //insertdb.recordtoDB(origintext, whatyousay.getText(), 0);
-        String[] arr=whatyousay.getText().split("\\D");
-        for(String s:arr)
-            System.out.print(s);
         
+        String target = "";
+        String[] arr = whatyousay.getText().split("\\d");
+        for(String s : arr)
+            target+=s;
+        
+        String number = "";
+        String[] arr1 = whatyousay.getText().split("\\D");
+        for(String s : arr1)
+            number+=s;
+        
+        insertdb.recordtoDB(origintext, target, Integer.parseInt(number));
         whatyousay.setText("What You Say");
         speech2text.setPromptText("");
+        upload.setDisable(true);
+        upload.setVisible(false);
+        edit.setDisable(true);
+        edit.setVisible(false);
+        enter.setDisable(true);
+        enter.setVisible(false);
     }
     private void changetext(){
         whatyousay.setText(speech2text.getText());
@@ -93,10 +105,14 @@ public class AccountingPresenter {
         speech2text.setVisible(false);
         upload.setDisable(false);
         upload.setVisible(true);
+        record.setDisable(false);
+        record.setVisible(true);
     }
     private void alter(){
         speech2text.setDisable(false);
         speech2text.setVisible(true);
+        record.setDisable(true);
+        record.setVisible(false);
         upload.setDisable(true);
         upload.setVisible(false);
     }
@@ -118,6 +134,8 @@ public class AccountingPresenter {
         enter.setVisible(false);
         stop.setDisable(false);
         stop.setVisible(true);
+        upload.setDisable(true);
+        upload.setVisible(false);
     }
     private void stopClick(Microphone mic)  throws Exception  {
        mic.close();
@@ -152,11 +170,12 @@ public class AccountingPresenter {
         SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
         System.out.printf("Transcription: %s%n", alternative.getTranscript());
         origintext = alternative.getTranscript();
+       
         whatyousay.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
-                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", ""));
+                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", ""));
         
         speech2text.setPromptText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
-                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", ""));
+                                                 .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", ""));
       }
     }
        record.setDisable(false);
