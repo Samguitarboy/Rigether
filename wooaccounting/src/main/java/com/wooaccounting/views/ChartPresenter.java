@@ -6,19 +6,65 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.wooaccounting.Wooaccounting;
+import java.util.stream.Collectors;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Side;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 public class ChartPresenter {
 
     @FXML
     private View chart;
     @FXML
-    private Label label;
+    private Label total, ent, foods, traf, others;
+    @FXML
+    private PieChart piechart;
     
+
     public void initialize() {
-        chart.setShowTransitionFactory(BounceInRightTransition::new);
         
+        int entertainment=2000,food=4000,traffic=3000,other=1200;
+        int sum = entertainment+food+traffic+other;
+        total.setText("Total: "+Integer.toString(sum));
+        ent.setText("娛樂: "+Integer.toString(entertainment));
+        foods.setText("飲食: "+Integer.toString(food));
+        traf.setText("交通: "+Integer.toString(traffic));
+        others.setText("其他: "+Integer.toString(other));
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("娛樂", entertainment),
+                new PieChart.Data("飲食", food),
+                new PieChart.Data("其他", traffic),
+                new PieChart.Data("交通", other)
+        );
+       piechart.setData(pieChartData);
+       piechart.setLegendSide(Side.TOP);
+       final Label caption = new Label("");
+       caption.setTextFill(Color.DARKORANGE);
+       caption.setStyle("-fx-font: 24 arial;");
+       DoubleBinding total = Bindings.createDoubleBinding(() ->
+       pieChartData.stream().collect(Collectors.summingDouble(PieChart.Data::getPieValue)), pieChartData);
+       
+       for (final PieChart.Data data : piechart.getData()) {
+        data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+            e -> {
+                caption.setTranslateX(e.getSceneX());
+                caption.setTranslateY(e.getSceneY());
+                String text = String.format("%.1f%%", 100*data.getPieValue()/total.get()) ;
+                caption.setText(text);
+             }
+            );
+    }
+
+        chart.setShowTransitionFactory(BounceInRightTransition::new);
         chart.showingProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue) {
                 AppBar appBar = MobileApplication.getInstance().getAppBar();
