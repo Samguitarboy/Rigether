@@ -48,10 +48,12 @@ public class AccountingPresenter {
     private AnchorPane wordpane;
     @FXML
     private ScrollPane scrollpane;
+    
     private String origintext;
     private boolean Q1 = true;
+    private boolean Pay = true;
     private VBox v = new VBox();
-
+    
     public void initialize() {
         accounting.setShowTransitionFactory(BounceInRightTransition::new);
 
@@ -65,7 +67,7 @@ public class AccountingPresenter {
         });
 
         BOT_default(v);
-
+       
         Microphone mic = new Microphone(FLACFileWriter.FLAC);
 
         record.setOnAction(e -> {
@@ -94,44 +96,83 @@ public class AccountingPresenter {
 
     private void uploadtodb() {
         InsertSQL insertdb = new InsertSQL();
+        Label newtext = new Label();
+        if (Pay) {
+            String target = "";
+            String[] arr = whatyousay.getText().split("\\d");
+            for (String s : arr) {
+                target += s;
+            }
 
-        String target = "";
-        String[] arr = whatyousay.getText().split("\\d");
-        for (String s : arr) {
-            target += s;
+            String number = "";
+            String[] arr1 = whatyousay.getText().split("\\D");
+            for (String s : arr1) {
+                number += s;
+            }
+            GetdataSQL classify = new GetdataSQL();
+            String result = classify.classify(target);
+            insertdb.recordtoDB(origintext, target, Integer.parseInt(number), result);
+
+            newtext.setText(target + number);
+            newtext.setPrefSize(320, 37);
+            newtext.setAlignment(Pos.CENTER_LEFT);
+            newtext.setPadding(new Insets(10, 0, 10, 205));
+            newtext.setStyle("-fx-background-image: url(\"/com/wooaccounting/views/label1.png\");");
+        } else {
+            String number = "";
+            String[] arr1 = origintext.split("\\D");
+            for (String s : arr1) {
+                number += s;
+            }
+
+            newtext.setText(origintext);
+            newtext.setPrefSize(320, 37);
+            newtext.setAlignment(Pos.CENTER_LEFT);
+            newtext.setPadding(new Insets(10, 0, 10, 205));
+            newtext.setStyle("-fx-background-image: url(\"/com/wooaccounting/views/label1.png\");");
+            insertdb.income_recordtoDB(origintext, Integer.parseInt(number));
         }
-
-        String number = "";
-        String[] arr1 = whatyousay.getText().split("\\D");
-        for (String s : arr1) {
-            number += s;
-        }
-        GetdataSQL classify = new GetdataSQL();
-        String result = classify.classify(target);
-        insertdb.recordtoDB(origintext, target, Integer.parseInt(number), result);
-
-        Label newtext = new Label(target + number);
-        newtext.setPrefSize(320, 37);
-        newtext.setAlignment(Pos.CENTER_LEFT);
-        newtext.setPadding(new Insets(10, 0, 10, 205));
-        newtext.setStyle("-fx-background-image: url(\"/com/wooaccounting/views/label1.png\");");
 
         Label newtext1 = new Label("已經幫您加入資料庫！");
         newtext1.setPrefSize(170, 37);
         newtext1.setPadding(new Insets(10, 0, 10, 30));
         newtext1.setAlignment(Pos.CENTER_LEFT);
 
-        v.getChildren().addAll(newtext, newtext1);
+        Label newtext2 = new Label("請問還需要甚麼服務?");
+        newtext2.setPrefSize(170, 37);
+        newtext2.setPadding(new Insets(10, 0, 10, 30));
+        newtext2.setAlignment(Pos.CENTER_LEFT);
+
+        Label newtext3 = new Label("記錄支出請說  \"支出\"");
+        newtext3.setPrefSize(170, 37);
+        newtext3.setPadding(new Insets(10, 0, 10, 30));
+        newtext3.setAlignment(Pos.CENTER_LEFT);
+
+        Label newtext4 = new Label("記錄收入請說  \"收入\"");
+        newtext4.setPrefSize(170, 37);
+        newtext4.setPadding(new Insets(10, 0, 10, 30));
+        newtext4.setAlignment(Pos.CENTER_LEFT);
+
+        Label newtext5 = new Label("查剩多少錢說  \"錢包\"");
+        newtext5.setPrefSize(170, 37);
+        newtext5.setPadding(new Insets(10, 0, 10, 30));
+        newtext5.setAlignment(Pos.CENTER_LEFT);
+
+        v.getChildren().addAll(newtext, newtext1, newtext2, newtext3, newtext4, newtext5);
 
         whatyousay.setText("What You Say");
         speech2text.setPromptText("");
+        whatyousay.setDisable(true);
+        whatyousay.setVisible(false);
+        speech2text.setDisable(true);
+        speech2text.setVisible(false);
         upload.setDisable(true);
         upload.setVisible(false);
         edit.setDisable(true);
         edit.setVisible(false);
         enter.setDisable(true);
         enter.setVisible(false);
-
+        Q1 = true;
     }
 
     private void changetext() {
@@ -213,11 +254,58 @@ public class AccountingPresenter {
                     stop.setDisable(true);
                     stop.setVisible(false);
                     Q1 = false;
-                    WE(v);
+                    Pay = true;
+                    WE_pay(v);
                 } else if (0 == "收入".compareTo(alternative.getTranscript())) {
-
+                    whatyousay.setDisable(false);
+                    whatyousay.setVisible(true);
+                    record.setDisable(false);
+                    record.setVisible(true);
+                    stop.setDisable(true);
+                    stop.setVisible(false);
+                    Q1 = false;
+                    Pay = false;
+                    WE_income(v);
                 } else if (0 == "錢包".compareTo(alternative.getTranscript())) {
+                    GetdataSQL wallet = new GetdataSQL();
+                    int surplus = wallet.getsurplus();
+                    Label newtext = new Label("我還有多少錢?");
+                    newtext.setPrefSize(320, 37);
+                    newtext.setAlignment(Pos.CENTER_LEFT);
+                    newtext.setPadding(new Insets(10, 0, 10, 205));
+                    newtext.setStyle("-fx-background-image: url(\"/com/wooaccounting/views/label1.png\");");
 
+                    Label newtext1 = new Label();
+                    newtext1.setText("您還有" + surplus + "元!");
+                    newtext1.setPrefSize(170, 37);
+                    newtext1.setPadding(new Insets(10, 0, 10, 30));
+                    newtext1.setAlignment(Pos.CENTER_LEFT);
+
+                    Label newtext2 = new Label("請問還需要甚麼服務?");
+                    newtext2.setPrefSize(170, 37);
+                    newtext2.setPadding(new Insets(10, 0, 10, 30));
+                    newtext2.setAlignment(Pos.CENTER_LEFT);
+
+                    Label newtext3 = new Label("記錄支出請說  \"支出\"");
+                    newtext3.setPrefSize(170, 37);
+                    newtext3.setPadding(new Insets(10, 0, 10, 30));
+                    newtext3.setAlignment(Pos.CENTER_LEFT);
+
+                    Label newtext4 = new Label("記錄收入請說  \"收入\"");
+                    newtext4.setPrefSize(170, 37);
+                    newtext4.setPadding(new Insets(10, 0, 10, 30));
+                    newtext4.setAlignment(Pos.CENTER_LEFT);
+
+                    Label newtext5 = new Label("查剩多少錢說  \"錢包\"");
+                    newtext5.setPrefSize(170, 37);
+                    newtext5.setPadding(new Insets(10, 0, 10, 30));
+                    newtext5.setAlignment(Pos.CENTER_LEFT);
+                    v.getChildren().addAll(newtext, newtext1, newtext2, newtext3, newtext4, newtext5);
+                    Q1 = true;
+                    record.setDisable(false);
+                    record.setVisible(true);
+                    stop.setDisable(true);
+                    stop.setVisible(false);
                 } else {
                     if (Q1) {
                         Label newtext = new Label("沒偵測到請再說一次!");
@@ -231,42 +319,59 @@ public class AccountingPresenter {
                         stop.setDisable(true);
                         stop.setVisible(false);
                     } else {
-                        whatyousay.setDisable(false);
-                        whatyousay.setVisible(true);
+                        if (Pay) {
+                            whatyousay.setDisable(false);
+                            whatyousay.setVisible(true);
 
-                        origintext = alternative.getTranscript();
+                            origintext = alternative.getTranscript();
 
-                        whatyousay.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
-                                .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", "").replace("買", "").replace("看", ""));
+                            whatyousay.setText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
+                                    .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", "").replace("買", "").replace("看", ""));
 
-                        speech2text.setPromptText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
-                                .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", "").replace("買", "").replace("看", ""));
+                            speech2text.setPromptText(alternative.getTranscript().replace("我", "").replace("今天", "").replace("吃", "").replace("早上", "").replace("中午", "").replace("晚上", "")
+                                    .replace("塊", "").replace("元", "").replace("昨天", "").replace("是", "").replace("花", "").replace("了", "").replace("買", "").replace("看", ""));
 
-                        Label newtext = new Label("確定記錄按upload");
-                        newtext.setPrefSize(170, 37);
-                        newtext.setPadding(new Insets(10, 0, 10, 30));
-                        newtext.setAlignment(Pos.CENTER_LEFT);
+                            Label newtext = new Label("確定記錄按upload");
+                            newtext.setPrefSize(170, 37);
+                            newtext.setPadding(new Insets(10, 0, 10, 30));
+                            newtext.setAlignment(Pos.CENTER_LEFT);
 
-                        Label newtext1 = new Label("重新錄音按start");
-                        newtext1.setPrefSize(170, 37);
-                        newtext1.setPadding(new Insets(10, 0, 10, 30));
-                        newtext1.setAlignment(Pos.CENTER_LEFT);
+                            Label newtext1 = new Label("重新錄音按start");
+                            newtext1.setPrefSize(170, 37);
+                            newtext1.setPadding(new Insets(10, 0, 10, 30));
+                            newtext1.setAlignment(Pos.CENTER_LEFT);
 
-                        Label newtext2 = new Label("直接打字記錄按edit");
-                        newtext2.setPrefSize(170, 37);
-                        newtext2.setPadding(new Insets(10, 0, 10, 30));
-                        newtext2.setAlignment(Pos.CENTER_LEFT);
+                            Label newtext2 = new Label("直接打字記錄按edit");
+                            newtext2.setPrefSize(170, 37);
+                            newtext2.setPadding(new Insets(10, 0, 10, 30));
+                            newtext2.setAlignment(Pos.CENTER_LEFT);
 
-                        v.getChildren().addAll(newtext, newtext1, newtext2);
+                            v.getChildren().addAll(newtext, newtext1, newtext2);
 
-                        edit.setDisable(false);
-                        edit.setVisible(true);
-                        upload.setDisable(false);
-                        upload.setVisible(true);
-                        record.setDisable(false);
-                        record.setVisible(true);
-                        stop.setDisable(true);
-                        stop.setVisible(false);
+                            edit.setDisable(false);
+                            edit.setVisible(true);
+                            upload.setDisable(false);
+                            upload.setVisible(true);
+                            record.setDisable(false);
+                            record.setVisible(true);
+                            stop.setDisable(true);
+                            stop.setVisible(false);
+                        } else {
+                            whatyousay.setDisable(false);
+                            whatyousay.setVisible(true);
+                            origintext = alternative.getTranscript();
+                            whatyousay.setText(alternative.getTranscript());
+                            speech2text.setPromptText(alternative.getTranscript());
+                            edit.setDisable(false);
+                            edit.setVisible(true);
+                            upload.setDisable(false);
+                            upload.setVisible(true);
+                            record.setDisable(false);
+                            record.setVisible(true);
+                            stop.setDisable(true);
+                            stop.setVisible(false);
+
+                        }
                     }
                 }
             }
@@ -322,8 +427,24 @@ public class AccountingPresenter {
 
     }
 
-    private void WE(VBox v) {
+    private void WE_pay(VBox v) {
         Label newtext = new Label("我要記錄支出 !");
+        newtext.setPrefSize(320, 37);
+        newtext.setAlignment(Pos.CENTER_LEFT);
+        newtext.setPadding(new Insets(10, 0, 10, 205));
+        newtext.setStyle("-fx-background-image: url(\"/com/wooaccounting/views/label1.png\");");
+
+        Label newtext1 = new Label("我們洗耳恭聽！");
+        newtext1.setPrefSize(170, 37);
+        newtext1.setPadding(new Insets(10, 0, 10, 30));
+        newtext1.setAlignment(Pos.CENTER_LEFT);
+
+        v.getChildren().addAll(newtext, newtext1);
+
+    }
+
+    private void WE_income(VBox v) {
+        Label newtext = new Label("我要記錄收入 !");
         newtext.setPrefSize(320, 37);
         newtext.setAlignment(Pos.CENTER_LEFT);
         newtext.setPadding(new Insets(10, 0, 10, 205));

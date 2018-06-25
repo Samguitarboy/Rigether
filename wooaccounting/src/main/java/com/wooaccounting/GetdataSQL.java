@@ -112,4 +112,24 @@ public class GetdataSQL {
         MSC_query2.clearresult();
         return  returndata;
     }
+    public int getsurplus(){
+        config con = new config();
+        String connectionStr = "jdbc:mysql://" + con.getUrlstr() + "/" + con.getDBName() + "?user=" + con.getUserstr() + "&password=" + con.getPw();
+        String querysumofexpenditure = "select sum(price) from Accounting";
+        String querysumofincome = "select sum(money) from income";
+        String returndata = "";
+        MySQLConnector MSC_query = new MySQLConnector();
+        MSC_query.connectDB(connectionStr);
+        
+        MSC_query.doquery(querysumofexpenditure);
+        int expenditure = Integer.valueOf(MSC_query.getResult().toString().trim());
+        MSC_query.clearresult();
+        
+        MSC_query.doquery(querysumofincome);
+        int income = Integer.valueOf(MSC_query.getResult().toString().trim());
+        MSC_query.clearresult();
+        
+        int surplus = income - expenditure;
+        return  surplus;
+    }
 }
