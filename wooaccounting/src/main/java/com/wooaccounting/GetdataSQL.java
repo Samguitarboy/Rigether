@@ -89,7 +89,6 @@ public class GetdataSQL {
         String connectionStr = "jdbc:mysql://" + con.getUrlstr() + "/" + con.getDBName() + "?user=" + con.getUserstr() + "&password=" + con.getPw();
         String querynum = "select count(*) from Accounting where recordDate ='" + date + "'";
         String querydate = "select target,price from Accounting where recordDate ='" + date + "'";
-        String querytime = "select modifiedTime from Accounting where recordDate ='" + date + "'";
         String returndata = "";
         MySQLConnector MSC_query = new MySQLConnector();
         MSC_query.connectDB(connectionStr);
@@ -100,20 +99,38 @@ public class GetdataSQL {
 
         MSC_query.doquery(querydate);
 
-        MySQLConnector MSC_query2 = new MySQLConnector();
-        MSC_query2.connectDB(connectionStr);
-        MSC_query2.doquery(querytime);
-
-        for (int i = 0; i < count; i++) {
-            String str = MSC_query2.getResult().toString().split("\n")[i].substring(10);
-            String str2 = str.substring(0, str.length() - 3);
-            returndata += MSC_query.getResult().toString().split("\n")[i] + str2 + "\n";
+        for (int i = 0; i < count; i++) { 
+            String str3 = MSC_query.getResult().toString().split("\n")[i];
+            returndata += str3 + "\n";
+            
         }
         MSC_query.clearresult();
-        MSC_query2.clearresult();
         return returndata;
     }
+    public String searchdate1(String date)
+    {
+        config con = new config();
+        String connectionStr = "jdbc:mysql://" + con.getUrlstr() + "/" + con.getDBName() + "?user=" + con.getUserstr() + "&password=" + con.getPw();
+        String querynum = "select count(*) from Accounting where recordDate ='" + date + "'";
+        String querytime = "select modifiedTime from Accounting where recordDate ='" + date + "'";
+        String returndata = "";
+        MySQLConnector MSC_query = new MySQLConnector();
+        MSC_query.connectDB(connectionStr);
 
+        MSC_query.doquery(querynum);
+        int count = Integer.valueOf(MSC_query.getResult().toString().trim());
+        MSC_query.clearresult();
+        
+        MSC_query.doquery(querytime);
+
+        for (int i = 0; i < count; i++) {
+            String str = MSC_query.getResult().toString().split("\n")[i].substring(10);
+            String str2 = str.substring(0, str.length() - 3);
+            returndata += str2 + "\n";          
+        }
+        MSC_query.clearresult();
+        return returndata;
+    }
     public int getsurplus() {
         config con = new config();
         String connectionStr = "jdbc:mysql://" + con.getUrlstr() + "/" + con.getDBName() + "?user=" + con.getUserstr() + "&password=" + con.getPw();

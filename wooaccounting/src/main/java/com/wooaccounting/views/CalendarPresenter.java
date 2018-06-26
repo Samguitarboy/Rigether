@@ -31,6 +31,7 @@ public class CalendarPresenter {
     private AnchorPane wordpane;
     
     private List<Label> lbls = new ArrayList<Label>();
+    private List<Label> lbls1 = new ArrayList<Label>();
     
     public void initialize() {
         calendar.setShowTransitionFactory(BounceInRightTransition::new);
@@ -50,33 +51,40 @@ public class CalendarPresenter {
         
         datepicker.setValue(LocalDate.now());
         lbls.add(label);
+        lbls1.add(label);
         setUI();
     }
     
     void setUI()
     {
         GetdataSQL d = new GetdataSQL();
-        LocalDate select = datepicker.getValue();
-        String [] data = d.searchdate(select.toString()).split("\n");
+        String date = datepicker.getValue().toString();
+        String [] data = d.searchdate(date).split("\n");
+        String [] data1 = d.searchdate1(date).split("\n");
         clear_and_new_lbls(data.length);
-        
+        // String [] a = "".spilt("\n") => a.length = 1
         for(int i=0;i<data.length;++i)
         {
             lbls.get(i).setText(data[i]);
-            lbls.get(i).setLayoutY(46 * i);
-            wordpane.getChildren().add(0,lbls.get(i));          
+            lbls1.get(i).setText(data1[i]);
+            wordpane.getChildren().add(0,lbls.get(i));
+            wordpane.getChildren().add(0,lbls1.get(i)); 
         }
-        if(data.length==1)
+        if(data[0].compareTo("") == 0)
             lbls.get(0).setText(" 今日尚無記錄(´・ω・`)");
-
+       
     }
     
     void clear_and_new_lbls(int count)
     {
         for(int i =0;i<lbls.size();++i)
+        {
             wordpane.getChildren().remove(lbls.get(i));
+            wordpane.getChildren().remove(lbls1.get(i));
+        }
+            
         lbls.clear();
-        
+        lbls1.clear();
         for(int i=0;i<count;++i)
         {
             Image img1 = new Image("/com/wooaccounting/views/small_icon.jpg");
@@ -84,7 +92,14 @@ public class CalendarPresenter {
             im.setFitHeight(30);
             im.setFitWidth(30);
             im.setLayoutY(46 * i);
-            lbls.add(new Label("",im));
+            Label l1 = new Label("",im);
+            l1.setLayoutY(46 * i);
+            lbls.add(l1);
+            
+            Label l2 = new Label();
+            l2.setLayoutX(150);
+            l2.setLayoutY(46 * i + 5);
+            lbls1.add(l2);
         }
             
         
