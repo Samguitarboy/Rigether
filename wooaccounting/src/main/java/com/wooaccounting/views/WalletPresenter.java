@@ -33,7 +33,7 @@ public class WalletPresenter {
         //    MSC_query.doquery("insert Deposit values(\""++",\"");
         }*/
 
-        int balance_value =/* eposit_value*/ + income_value - expend_value;
+        int balance_value = deposit_value + income_value - expend_value;
 
         deposit.setText(deposit.getText() + Integer.toString(deposit_value));
         income.setText(income.getText() + Integer.toString(income_value));

@@ -35,7 +35,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class AccountingPresenter {
-
     @FXML
     private View accounting;
     @FXML
@@ -46,9 +45,6 @@ public class AccountingPresenter {
     private Button record, stop, edit, enter, upload;
     @FXML
     private AnchorPane wordpane;
-    @FXML
-    private ScrollPane scrollpane;
-    
     private String origintext;
     private boolean Q1 = true;
     private boolean Pay = true;
@@ -93,7 +89,7 @@ public class AccountingPresenter {
             uploadtodb();
         });
     }
-
+    
     private void uploadtodb() {
         InsertSQL insertdb = new InsertSQL();
         Label newtext = new Label();
@@ -211,7 +207,7 @@ public class AccountingPresenter {
         stop.setDisable(false);
         stop.setVisible(true);
 
-    }
+    }//
 
     private void stopClick(Microphone mic) throws Exception {
         mic.close();
